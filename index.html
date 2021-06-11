@@ -18,13 +18,13 @@
         <nav class="nav-list">
                 <a class="logo" href="./index.html" ><span class="first-logo">Web</span>Studio</a>
             <ul class="nav">
-                <li class="nav-list-item"><a class="link" href="index.html">Студия</a></li>
+                <li class="nav-list-item"><a class="link current" href="index.html">Студия</a></li>
                 <li class="nav-list-item"><a class="link" href="portfolio.html">Портфолио</a></li>
                 <li class="nav-list-item"><a class="link" href="">Контакты</a></li>
             </ul>
         
 
-            <ul class="contacts">
+            <ul class="contacts conect">
               <li class="contacts-item">
                 
                 <a href="mailto:info@devstudio.com"><svg class="icon-mail" width="16px" height="12px">
@@ -45,7 +45,7 @@
          <section class="banner">
             <div class="container">
             <h1 class="title-baner">Эффективное решения <br> для вашего бизнеса</h1>
-            <button class="btn" type="button">Заказать услугу</button> 
+            <button class="btn" type="button" data-modal-open>Заказать услугу</button> 
             </div> 
         </section>
  
@@ -80,13 +80,30 @@
 
         <!-- Чем мы занимаемся -->
 
-        <section class="what-we-do">
+        <section class="what-we-do active">
             <div class="container">
             <h2 class="title-section">Чем мы занимаемся</h2>
             <ul class="what-we-do-list">
-                <li class="what-we-do-item"><img src="./images/box1.jpg" alt="план" width="370"></li>
-                <li class="what-we-do-item"><img src="./images/box2.jpg" alt="анализ" width="370"></li>
-                <li class="what-we-do-item"><img src="./images/box3.jpg" alt="реализация" width="370"></li>
+                <li class="what-we-do-item">
+                    <a href="" class="link">
+                    <img src="./images/box1.jpg" alt="план" width="370">
+                    <h3 class="work-name">Десктопные приложения</h3>
+                    </a>
+                </li>
+
+                <li class="what-we-do-item">
+                    <a href="" class="link">
+                    <img src="./images/box2.jpg" alt="анализ" width="370">
+                <h3 class="work-name">Мобильные приложения</h3>
+                    </a>   
+            </li>
+
+                <li class="what-we-do-item">
+                    <a href="" class="link">
+                    <img src="./images/box3.jpg" alt="реализация" width="370">
+                <h3 class="work-name">Дизайнерские решения</h3>
+                    </a>   
+            </li>
             </ul>
             </div>
         </section>
@@ -294,5 +311,20 @@
 </div>
 
     </footer>
+<!-- Модальне вікно -->
+<div class="backdrop is-hidden" data-modal>
+    <div class="modal">
+        <button class="close button" data-modal-close>
+            <svg class="modal-cross" width="11" height="11">
+                <use href="./images/icons.svg#close"></use>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script src="./js/modal.js"></script>
+
+
+
 </body>
 </html>

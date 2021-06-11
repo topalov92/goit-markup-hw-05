@@ -9,8 +9,12 @@
   --background-button: #f5f4fa;
   --black-color: #000000;
   --social-icons: #afb1b8;
+  --works-text-bg: rgba(33, 150, 243, 0.9);
   --main-font: 'Roboto', sans-serif;
   --accent-font: 'Raleway', sans-serif;
+  /* animation */
+  --bezier: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 250ms;
 }
 
 *,
@@ -62,7 +66,6 @@ img {
 /* header */
 
 .header {
-  padding: 25px 0;
   border-bottom: 1px solid #ececec;
 }
 
@@ -92,7 +95,6 @@ img {
 
 .nav-list a {
   text-decoration: none;
-  color: var(--main-text-color);
 }
 
 .nav-list-item:not(:last-child) {
@@ -122,9 +124,56 @@ img {
   font-size: 14px;
 }
 
-.link:hover,
-.link:focus {
+.current {
   color: var(--blue-color);
+}
+
+.conect,
+.conect .nav-list-item .contacts-item {
+  display: flex;
+  margin-left: auto;
+}
+
+.nav-list .link,
+.conect .link {
+  display: block;
+  position: relative;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier) 0;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+}
+
+.nav-list .link:hover,
+.nav-list .link:focus {
+  color: var(--blue-color);
+}
+
+.current::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--blue-color);
+  animation-duration: var(--duration);
+  animation-timing-function: var(--bezier);
+  animation-name: fade-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .contacts-item:not(:last-child) {
@@ -300,6 +349,33 @@ img {
 }
 .what-we-do .what-we-do-item:last-child {
   margin-right: 0;
+}
+
+/* new */
+.what-we-do-item {
+  position: relative;
+  flex-basis: calc(100% / 3);
+  text-align: center;
+}
+.work-name {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.143;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.work-name {
+  position: absolute;
+  bottom: 0px;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  margin-bottom: 0px;
+  width: 100%;
+  color: var(--white-color);
+  background-color: rgba(47, 48, 58, 0.8);
 }
 
 /* Чем мы занимаемся */
@@ -661,4 +737,111 @@ img {
   box-sizing: border-box;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.card-thumb {
+  position: relative;
+  overflow: hidden;
+  width: 370px;
+  height: 294px;
+}
+
+.text-animation .works-text {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--white-color);
+}
+
+.text-animation {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: var(--works-text-bg);
+
+  transform: translateY(101%);
+  transition-property: transform;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier);
+}
+
+.work-link:hover .text-animation,
+.work-link:focus .text-animation {
+  transform: translateY(0);
+}
+
+/* Модальне вікно */
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition-property: opacity, visibility;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 528px;
+  min-height: 582px;
+  transform: translate(-50%, -50%) scale(1);
+  transition-property: transform;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier);
+  background-color: var(--white-color);
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.close.button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-cross {
+  color: var(--black-color);
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier);
+}
+
+.modal .button:hover .modal-cross,
+.modal .button:focus .modal-cross {
+  color: var(--blue-color);
 }

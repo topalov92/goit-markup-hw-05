@@ -192,6 +192,10 @@ img {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
+  transition-property: color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier) 0;
 }
 .contacts a:hover,
 .contacts a:focus {
@@ -456,6 +460,9 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-property: color, background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier) 0;
 }
 
 .social-icons a:hover {
@@ -507,6 +514,9 @@ img {
   border: 1px solid var(--social-icons);
   border-radius: 4px;
   color: var(--social-icons);
+  transition-property: color, border-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier) 0;
 }
 
 .link-company:hover {
@@ -630,6 +640,9 @@ img {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  transition-property: color, background-color;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier) 0;
 }
 .social-item-footer:not(:last-child) {
   margin-right: 10px;
@@ -677,6 +690,9 @@ img {
   background-color: var(--background-button);
   margin-left: 8px;
   padding: 6px 22px;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--bezier);
 }
 
 .btn-works:hover,
